@@ -2,46 +2,149 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="shortcut icon" href="https://abs.twimg.com/favicons/twitter-pip.3.ico">
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-  <link rel="stylesheet" href="./output.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X Clone</title>
+
+    <link rel="shortcut icon" href="https://abs.twimg.com/favicons/twitter-pip.3.ico">
+
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+
+    <link rel="stylesheet" href="./output.css">
 </head>
 
-<body class=" bg-black text-white">
-  <div class="flex conatiner mx-auto ">
-    <div class="first w-full">
-      <div class="logo invert">
-        <svg viewBox="0 0 24 24" aria-hidden="true"
-        class="w-8 r-4qtqp9 r-yyyyoo r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-lrsllp r-1nao33i r-16y2uox r-8kz0gk">
-        <g>
-          <path
-            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
-          </path>
-        </g>
-      </svg>
-      </div>
-      <div class="sidebar">
-        
-        <ul class="flex flex-col">
-          <li class ="flex justify-center items-center"><span class="material-symbols-outlined">
-          ADD
-        </span>
-            home</li>
-          <li>home</li>
-          <li>home</li>
-          <li>home</li>
-        </ul>
-      </div>
-      
+<body class="bg-black text-white">
+
+    <div class="container mx-auto flex">
+
+        <!-- Left Sidebar -->
+        <div class="w-1/4 p-4">
+
+            <!-- Logo -->
+            <div class="mb-6">
+                <svg viewBox="0 0 24 24" class="w-8 h-8 fill-white">
+                    <g>
+                        <path
+                            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
+                        </path>
+                    </g>
+                </svg>
+            </div>
+
+            <!-- Menu -->
+            <ul class="flex flex-col gap-2 text-xl">
+
+                <li
+                    class="flex items-center gap-4 hover:bg-zinc-800 rounded-full px-4 py-3 cursor-pointer w-fit">
+                    <span class="material-symbols-outlined text-3xl">home</span>
+                    <span>Home</span>
+                </li>
+
+                <li
+                    class="flex items-center gap-4 hover:bg-zinc-800 rounded-full px-4 py-3 cursor-pointer w-fit">
+                    <span class="material-symbols-outlined text-3xl">search</span>
+                    <span>Explore</span>
+                </li>
+
+                <li
+                    class="flex items-center gap-4 hover:bg-zinc-800 rounded-full px-4 py-3 cursor-pointer w-fit">
+                    <span class="material-symbols-outlined text-3xl">notifications</span>
+                    <span>Notifications</span>
+                </li>
+
+                <li
+                    class="flex items-center gap-4 hover:bg-zinc-800 rounded-full px-4 py-3 cursor-pointer w-fit">
+                    <span class="material-symbols-outlined text-3xl">smart_toy</span>
+                    <span>Grok</span>
+                </li>
+
+                <li
+                    class="flex items-center gap-4 hover:bg-zinc-800 rounded-full px-4 py-3 cursor-pointer w-fit">
+                    <span class="material-symbols-outlined text-3xl">list</span>
+                    <span>Lists</span>
+                </li>
+
+                <li
+                    class="flex items-center gap-4 hover:bg-zinc-800 rounded-full px-4 py-3 cursor-pointer w-fit">
+                    <span class="material-symbols-outlined text-3xl">bookmark</span>
+                    <span>Bookmarks</span>
+                </li>
+
+                <li
+                    class="flex items-center gap-4 hover:bg-zinc-800 rounded-full px-4 py-3 cursor-pointer w-fit">
+                    <span class="material-symbols-outlined text-3xl">groups</span>
+                    <span>Communities</span>
+                </li>
+
+                <li
+                    class="flex items-center gap-4 hover:bg-zinc-800 rounded-full px-4 py-3 cursor-pointer w-fit">
+                    <span class="material-symbols-outlined text-3xl">workspace_premium</span>
+                    <span>Premium</span>
+                </li>
+
+                <li
+                    class="flex items-center gap-4 hover:bg-zinc-800 rounded-full px-4 py-3 cursor-pointer w-fit">
+                    <span class="material-symbols-outlined text-3xl">person</span>
+                    <span>Profile</span>
+                </li>
+
+                <li
+                    class="flex items-center gap-4 hover:bg-zinc-800 rounded-full px-4 py-3 cursor-pointer w-fit">
+                    <span class="material-symbols-outlined text-3xl">more_horiz</span>
+                    <span>More</span>
+                </li>
+
+            </ul>
+
+            <!-- Post Button -->
+            <!-- <button
+                class="bg-white text-black font-bold rounded-full w-56 py-3 mt-6 hover:bg-gray-300 transition">
+                Post
+            </button> -->
+
+        </div>
+
+        <!-- Middle Section -->
+        <!-- <div class="w-2/4 border-x border-zinc-700 min-h-screen">
+            <h1 class="text-xl font-bold p-4 border-b border-zinc-700">
+                Home
+            </h1>
+        </div> -->
+        <div class="second w-full border-x border-x-white border-y-black"></div>
+
+        <!-- Right Sidebar -->
+         <div class="third w-full">
+
+         </div>
+
+
+        <!-- <div class="w-1/4 p-4">
+            <div class="bg-zinc-900 rounded-2xl p-4">
+                <h2 class="text-xl font-bold mb-3">What's happening</h2>
+
+                <div class="mb-4">
+                    <p class="text-sm text-gray-500">Trending in India</p>
+                    <p class="font-semibold">#TailwindCSS</p>
+                    <p class="text-sm text-gray-500">15.3K Posts</p>
+                </div>
+
+                <div class="mb-4">
+                    <p class="text-sm text-gray-500">Technology · Trending</p>
+                    <p class="font-semibold">#JavaScript</p>
+                    <p class="text-sm text-gray-500">98K Posts</p>
+                </div>
+
+                <div>
+                    <p class="text-sm text-gray-500">Sports · Trending</p>
+                    <p class="font-semibold">#Cricket</p>
+                    <p class="text-sm text-gray-500">210K Posts</p>
+                </div>
+            </div> -->
+        </div>
 
     </div>
-    <div class="second  w-full">b</div>
-    <div class="third w-full">ccc</div>
-  </div>
+
 </body>
 
 </html>
