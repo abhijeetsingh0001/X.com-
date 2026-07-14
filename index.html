@@ -16,13 +16,13 @@
 
 <body class="bg-black text-white">
 
-    <div class="container mx-auto flex">
+    <div class="md:container mx-auto my-4 flex">
 
         <!-- Left Sidebar -->
-        <div class="w-1/4 p-4">
+        <div class="sidebar flex md:items-end  flex-col sticky top-0">
 
             <!-- Logo -->
-            <div class="mb-6">
+            <div class="logo invert my-4 self-start mx-2 md:mx-16">
                 <svg viewBox="0 0 24 24" class="w-8 h-8 fill-white">
                     <g>
                         <path
@@ -33,62 +33,62 @@
             </div>
 
             <!-- Menu -->
-            <ul class="flex flex-col gap-2 text-xl">
+            <ul class="flex flex-col text-2xl space-y-3 md:px-11 font-bold w-full">
 
-                <li class="flex items-center gap-4 hover:bg-zinc-800 rounded-full px-4 py-3 cursor-pointer w-fit">
+                <li class="flex md:justify-start items-center gap-3 justify-center  mr-4 md:w-fit  hover:bg-gray-900 hover:cursor-pointer px-5 py-3 hover:rounded-full">
                     <span class="material-symbols-outlined text-3xl">home</span>
-                    <span>Home</span>
+                    <span class="hidden md:block">Home</span>
                 </li>
 
-                <li class="flex items-center gap-4 hover:bg-zinc-800 rounded-full px-4 py-3 cursor-pointer w-fit">
+                <li class="flex md:justify-start items-center gap-3 justify-center  mr-4 md:w-fit  hover:bg-gray-900 hover:cursor-pointer px-5 py-3 hover:rounded-full">
                     <span class="material-symbols-outlined text-3xl">search</span>
-                    <span>Explore</span>
+                    <span class="hidden md:block">Explore</span>
                 </li>
 
-                <li class="flex items-center gap-4 hover:bg-zinc-800 rounded-full px-4 py-3 cursor-pointer w-fit">
+                <li class="flex md:justify-start items-center gap-3 justify-center  mr-4 md:w-fit  hover:bg-gray-900 hover:cursor-pointer px-5 py-3 hover:rounded-full">
                     <span class="material-symbols-outlined text-3xl">notifications</span>
-                    <span>Notifications</span>
+                    <span class="hidden md:block">Notifications</span>
                 </li>
 
-                <li class="flex items-center gap-4 hover:bg-zinc-800 rounded-full px-4 py-3 cursor-pointer w-fit">
+                <li class="flex md:justify-start items-center gap-3 justify-center  mr-4 md:w-fit  hover:bg-gray-900 hover:cursor-pointer px-5 py-3 hover:rounded-full">
                     <span class="material-symbols-outlined text-3xl">smart_toy</span>
-                    <span>Grok</span>
+                    <span class="hidden md:block">Grok</span>
                 </li>
 
-                <li class="flex items-center gap-4 hover:bg-zinc-800 rounded-full px-4 py-3 cursor-pointer w-fit">
+                <li class="flex md:justify-start items-center gap-3 justify-center  mr-4 md:w-fit  hover:bg-gray-900 hover:cursor-pointer px-5 py-3 hover:rounded-full">
                     <span class="material-symbols-outlined text-3xl">list</span>
-                    <span>Lists</span>
+                    <span class="hidden md:block">Lists</span>
                 </li>
 
-                <li class="flex items-center gap-4 hover:bg-zinc-800 rounded-full px-4 py-3 cursor-pointer w-fit">
+                <li class="flex md:justify-start items-center gap-3 justify-center  mr-4 md:w-fit  hover:bg-gray-900 hover:cursor-pointer px-5 py-3 hover:rounded-full">
                     <span class="material-symbols-outlined text-3xl">bookmark</span>
-                    <span>Bookmarks</span>
+                    <span class="hidden md:block">Bookmarks</span>
                 </li>
 
-                <li class="flex items-center gap-4 hover:bg-zinc-800 rounded-full px-4 py-3 cursor-pointer w-fit">
+                <li class="flex md:justify-start items-center gap-3 justify-center  mr-4 md:w-fit  hover:bg-gray-900 hover:cursor-pointer px-5 py-3 hover:rounded-full">
                     <span class="material-symbols-outlined text-3xl">groups</span>
-                    <span>Communities</span>
+                    <span class="hidden md:block">Communities</span>
                 </li>
 
-                <li class="flex items-center gap-4 hover:bg-zinc-800 rounded-full px-4 py-3 cursor-pointer w-fit">
+                <li class="flex md:justify-start items-center gap-3 justify-center  mr-4 md:w-fit  hover:bg-gray-900 hover:cursor-pointer px-5 py-3 hover:rounded-full">
                     <span class="material-symbols-outlined text-3xl">workspace_premium</span>
-                    <span>Premium</span>
+                    <span class="hidden md:block">Premium</span>
                 </li>
 
-                <li class="flex items-center gap-4 hover:bg-zinc-800 rounded-full px-4 py-3 cursor-pointer w-fit">
+                <li class="flex md:justify-start items-center gap-3 justify-center  mr-4 md:w-fit  hover:bg-gray-900 hover:cursor-pointer px-5 py-3 hover:rounded-full">
                     <span class="material-symbols-outlined text-3xl">person</span>
-                    <span>Profile</span>
+                    <span class="hidden md:block">Profile</span>
                 </li>
 
-                <li class="flex items-center gap-4 hover:bg-zinc-800 rounded-full px-4 py-3 cursor-pointer w-fit">
+                <li class="flex md:justify-start items-center gap-3 justify-center  mr-4 md:w-fit  hover:bg-gray-900 hover:cursor-pointer px-5 py-3 hover:rounded-fullt">
                     <span class="material-symbols-outlined text-3xl">more_horiz</span>
-                    <span>More</span>
+                    <span class="hidden md:block">More</span>
                 </li>
 
             </ul>
 
             <!-- Post Button -->
-            <button class="bg-white text-black font-bold rounded-full w-56 py-3 mt-6 hover:bg-gray-300 transition">
+            <button class="hidden md:block bg-[#1d9bf0] px-20 text-xl rounded-full py-3 text-white">
                 Post
             </button>
 
@@ -100,7 +100,7 @@
                 Home
             </h1>
         </div> -->
-        <div class="second w-full border-x border-x-white border-y-black relative">
+        <div class="second w-full border-x border-x-gray-600 border-y-black relative">
 
 
             <div class="top flex p-3 relative ">
