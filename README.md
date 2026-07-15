@@ -12,16 +12,27 @@ A responsive, static front-end clone of the **X (formerly Twitter)** home feed U
 
 - [About the Project](#about-the-project)
 - [Features](#features)
+- [Live Preview / Screenshots](#live-preview--screenshots)
 - [Tech Stack](#tech-stack)
 - [Project Structure](#project-structure)
+- [UI Breakdown](#ui-breakdown)
+  - [Left Sidebar](#1-left-sidebar-navigation)
+  - [Middle Feed](#2-middle-feed)
+  - [Right Sidebar](#3-right-sidebar)
+- [Design System](#design-system)
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
   - [Running the Project](#running-the-project)
+  - [Troubleshooting](#troubleshooting)
 - [How the Styling Works](#how-the-styling-works)
+- [Responsive Behavior](#responsive-behavior)
+- [Browser Support](#browser-support)
 - [Roadmap](#roadmap)
 - [Known Issues](#known-issues)
+- [FAQ](#faq)
 - [Contributing](#contributing)
+- [Acknowledgments](#acknowledgments)
 - [License](#license)
 
 ---
@@ -50,6 +61,21 @@ It is purely a front-end/static UI project — there is no backend, authenticati
 - **Google Material Symbols** used throughout for icons
 - **Dark theme** matching X's default black/white color scheme
 
+## 🖼️ Live Preview / Screenshots
+
+> Add screenshots of your rendered UI here once available. Suggested shots:
+> - Full desktop layout (three columns)
+> - Mobile/tablet layout (collapsed icon sidebar)
+> - Post composer close-up
+> - Right sidebar widgets close-up
+
+```markdown
+![Desktop View](./screenshots/desktop.png)
+![Mobile View](./screenshots/mobile.png)
+```
+
+You can generate these by opening `index.html` in a browser, resizing the window, and using your OS screenshot tool, then saving the images into a `/screenshots` folder in the repo.
+
 ## 🛠️ Tech Stack
 
 | Technology | Purpose |
@@ -71,6 +97,65 @@ It is purely a front-end/static UI project — there is no backend, authenticati
 ├── package.json         # Project dependencies
 └── package-lock.json     # Dependency lock file
 ```
+
+## 🧩 UI Breakdown
+
+The page is built as a single `flex` row containing three main columns inside a centered, responsive container (`md:container mx-auto my-4 flex`).
+
+### 1. Left Sidebar (Navigation)
+
+A sticky column (`sticky top-0`) that holds:
+
+| Element | Description |
+|---|---|
+| **Logo** | Inline SVG of the X logo, inverted to white via the `invert` utility |
+| **Menu list** | A `<ul>` of 10 nav items — Home, Explore, Notifications, Grok, Lists, Bookmarks, Communities, Premium, Profile, More — each using a Material Symbols icon + text label |
+| **Label visibility** | Labels are wrapped in `hidden md:block`, so only icons show on small screens and full text appears from the `md:` breakpoint up |
+| **Hover state** | Each item has `hover:bg-gray-900 hover:rounded-full` for a pill-shaped highlight on hover, matching X's native behavior |
+| **Post button** | A pill-shaped, blue (`bg-[#1d9bf0]`) call-to-action button, hidden below `md:` to save space on mobile |
+
+### 2. Middle Feed
+
+The central `second` column is bordered on both sides (`border-x`) to visually separate it from the other two columns. It contains:
+
+- **Tab bar** — "For You" / "Following" tabs rendered side-by-side (`flex`, each `w-1/2`), with a small blue pill (`absolute ... bg-blue-700`) positioned under the active tab to indicate selection, plus a settings gear icon
+- **Divider** — a full-width 1px gray line separating the tab bar from the composer
+- **Post composer** —
+  - Circular avatar image on the left
+  - Borderless text input styled to blend into the black background (`bg-black text-white outline-none`)
+  - A "Everyone can Reply" indicator row with a globe icon
+  - A row of 6 action icons (image, gif, poll/ballot, emoji, calendar, location pin) in X's signature blue (`text-blue-400`)
+- **Post card** — A sample post showing:
+  - Avatar thumbnail
+  - Bold display name + gray `@handle · timestamp` line
+  - Post text content
+  - An attached image, rounded with `rounded-xl`
+  - An engagement bar with 4 icons (reply, repost, like, view count), each with a distinct hover color matching X's convention: blue for reply/views, green for repost, pink for like
+
+### 3. Right Sidebar
+
+The `third` column contains:
+
+- **Search bar** — Rounded pill input (`rounded-full`) with a dark background (`bg-[#16181c]`)
+- **"What's Happening" card** — A rounded panel listing 4 trending-topic items, each showing a category label ("Trending in India"), a topic name, and a post count
+- **"Who to Follow" card** — A rounded panel suggesting an account to follow, plus a "Show More" link styled in X's blue underline convention
+
+> 💡 There's also a **commented-out alternate right sidebar** at the bottom of `index.html` — an earlier draft using a simpler `bg-zinc-900` card design. It's left in place for reference and can be removed once the current design is finalized.
+
+## 🎨 Design System
+
+| Token | Value | Usage |
+|---|---|---|
+| Background | `bg-black` | Page background |
+| Text | `text-white` | Default text color |
+| Accent Blue | `#1d9bf0` | Post button, links, active icons |
+| Card Background | `#16181c` | Search bar, sidebar widget panels |
+| Borders | `border-zinc-700` / `border-gray-600` | Column dividers |
+| Like (pink) | `text-pink-500` | Like icon hover |
+| Repost (green) | `text-green-500` | Repost icon hover |
+| Reply/View (blue) | `text-blue-500` | Reply & analytics icon hover |
+| Font | System default (via Tailwind's `font-sans` reset) | Body copy |
+| Icons | Material Symbols Outlined, size `text-3xl` (nav) / default (post icons) | All iconography |
 
 ## 🚀 Getting Started
 
@@ -108,6 +193,16 @@ For a one-time production build (minified):
 npx @tailwindcss/cli -i ./index.css -o ./output.css --minify
 ```
 
+### Troubleshooting
+
+| Problem | Likely Cause | Fix |
+|---|---|---|
+| Page looks unstyled (plain black/white HTML) | `output.css` wasn't generated or isn't linked correctly | Run the Tailwind CLI build command above, and confirm `index.html` has `<link rel="stylesheet" href="./output.css">` |
+| Icons show as text words instead of symbols (e.g. "home" as plain text) | Material Symbols font failed to load | Check your internet connection — the font is loaded from `fonts.googleapis.com` via CDN, not bundled locally |
+| Changes to classes in `index.html` don't appear | CLI isn't watching for changes | Make sure you ran the command with `--watch`, or re-run the build manually after each change |
+| `npx @tailwindcss/cli` command not found | Dependencies not installed | Run `npm install` first |
+| Layout looks broken/overlapping on desktop | Browser window too narrow to trigger `md:` styles | Widen the browser window past Tailwind's `md` breakpoint (768px) |
+
 ## 🎨 How the Styling Works
 
 - `index.css` contains a single line: `@import "tailwindcss";` — this pulls in all of Tailwind's utility classes.
@@ -115,13 +210,49 @@ npx @tailwindcss/cli -i ./index.css -o ./output.css --minify
 - `index.html` links directly to the compiled `output.css` file, so no runtime build step is needed once compiled.
 - Responsive design is handled via Tailwind's `md:` breakpoint prefix (e.g., sidebar labels are hidden on mobile with `hidden md:block`).
 
+## 📱 Responsive Behavior
+
+The layout is built mobile-first with Tailwind's `md:` breakpoint (≥768px) marking the switch between compact and expanded views:
+
+| Screen Size | Left Sidebar | Post Button | Middle Feed | Right Sidebar |
+|---|---|---|---|---|
+| **< 768px (mobile)** | Icons only, centered (`justify-center`) | Hidden | Full width, primary focus | Present but not optimized (see Known Issues) |
+| **≥ 768px (desktop)** | Icons + text labels, right-aligned (`md:items-end`) | Visible, full pill button | Fixed middle column with borders | Visible with search + widgets |
+
+The container itself uses `md:container mx-auto`, so the three-column layout only centers and constrains width from the `md` breakpoint upward — on mobile it stretches full width.
+
+## 🌐 Browser Support
+
+Tested primarily on modern Chromium-based browsers. Since the project relies only on standard CSS (via Tailwind) and no JavaScript, it should work consistently across:
+
+- ✅ Chrome / Edge (latest)
+- ✅ Firefox (latest)
+- ✅ Safari (latest)
+- ⚠️ Older browsers (IE11 and below) are **not supported** — Tailwind v4 targets modern CSS features (e.g. `@layer`, native cascade layers) that require a recent browser engine
+
 ## 🗺️ Roadmap
 
-- [ ] Add JavaScript interactivity (tab switching, post submission, like/repost counters)
-- [ ] Make posts dynamic (render from a data array instead of hardcoded HTML)
-- [ ] Improve mobile responsiveness for the right sidebar (currently hidden/cramped on small screens)
-- [ ] Add a dark/light theme toggle
-- [ ] Replace placeholder images with configurable avatar/media sources
+**Interactivity**
+- [ ] Add JavaScript for tab switching ("For You" / "Following") with dynamic underline movement
+- [ ] Wire up like, repost, bookmark, and reply buttons with local state and animated counters
+- [ ] Make the post composer functional — submit new posts and prepend them to the feed
+- [ ] Add a working image/GIF picker and emoji picker for the composer
+
+**Data & Content**
+- [ ] Refactor posts into a JS/JSON data array and render via a template function instead of hardcoded HTML
+- [ ] Replace all placeholder avatars/images with configurable sample data or a mock API (e.g. JSONPlaceholder)
+- [ ] Populate "Who to Follow" and "What's Happening" with more realistic, varied sample entries
+
+**UX / Design**
+- [ ] Improve right sidebar responsiveness for tablet/mobile viewports
+- [ ] Add a light theme toggle to match X's real theme switcher
+- [ ] Add loading skeletons for posts and sidebar widgets
+- [ ] Add subtle transition/animation on hover states and tab switches
+
+**Tooling**
+- [ ] Set up a simple dev server script in `package.json` (e.g. via `live-server` or `vite`)
+- [ ] Add ESLint/Prettier or a Tailwind class sorter (e.g. `prettier-plugin-tailwindcss`) for consistent formatting
+- [ ] Add GitHub Actions CI to auto-build `output.css` on push
 
 ## 🐛 Known Issues
 
@@ -129,15 +260,51 @@ npx @tailwindcss/cli -i ./index.css -o ./output.css --minify
 - Search input and "Who to Follow"/"What's Happening" widgets are static (non-functional)
 - Typo in class name `hover:rounded-fullt` (extra `t`) on the "More" menu item
 
+## ❓ FAQ
+
+**Q: Why is there no `tailwind.config.js` file?**
+A: This project uses Tailwind CSS v4, which moved to a CSS-first configuration model. Instead of a JS config file, customization happens directly in CSS (e.g. via `@theme` in `index.css`) if needed. For this project, the default theme is used as-is.
+
+**Q: Can I use this with React/Vue/Next.js instead of plain HTML?**
+A: The current version is intentionally framework-free to focus on Tailwind fundamentals. The markup could be ported into a component-based framework, but that would require restructuring `index.html` into components — not currently in scope for this repo.
+
+**Q: Why does `output.css` need to be committed to the repo?**
+A: Since there's no build server, `index.html` links directly to the compiled `output.css` for the site to render correctly out-of-the-box (e.g. on GitHub Pages) without requiring visitors to run a build step.
+
+**Q: Is this connected to a real backend or the actual X/Twitter API?**
+A: No. All data (posts, avatars, trends, follow suggestions) is static, hardcoded placeholder content for UI demonstration purposes only.
+
 ## 🤝 Contributing
 
-Contributions, issues, and feature requests are welcome!
+Contributions, issues, and feature requests are welcome! This is a learning project, so beginner-friendly PRs (fixing typos, improving responsiveness, adding comments) are especially appreciated.
 
-1. Fork the project
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+1. **Fork** the project
+2. **Create your feature branch**
+   ```bash
+   git checkout -b feature/AmazingFeature
+   ```
+3. **Make your changes** and rebuild CSS if needed
+   ```bash
+   npx @tailwindcss/cli -i ./index.css -o ./output.css
+   ```
+4. **Commit your changes**
+   ```bash
+   git commit -m "Add some AmazingFeature"
+   ```
+5. **Push to the branch**
+   ```bash
+   git push origin feature/AmazingFeature
+   ```
+6. **Open a Pull Request** describing what you changed and why
+
+Please keep PRs focused on a single change/feature to make review easier.
+
+## 🙏 Acknowledgments
+
+- [Tailwind CSS](https://tailwindcss.com/) — for the utility-first styling framework
+- [Google Fonts / Material Symbols](https://fonts.google.com/icons) — for the icon set
+- [X (Twitter)](https://x.com/) — for the original UI/UX design this project is inspired by and replicates for educational purposes
+- Sample profile images sourced from public X CDN URLs for placeholder/demo purposes only
 
 ## 📄 License
 
